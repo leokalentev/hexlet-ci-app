@@ -3,15 +3,14 @@ name: Check project
 on: [push]
 
 jobs:
-  check-job:
+  build:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v4
       - name: Setup project
         run: make setup
-
-      - name: Starting test
+      - name: Run tests
         run: make test
-
-      - name: Starting linter
+      - name: Run linter
         run: make lint
